@@ -18,19 +18,27 @@ y = np.sin(omega*t_vec)
 plt.plot(t_vec,y)
 plt.show()
 
+f = Fs*np.arange((N/2))/N # frequency vector
+
 # fourier transform and frequency domain
 #
 Y_k = np.fft.fft(y)[0:int(N/2)]/N # FFT function from numpy
+plt.plot(f,Y_k)
+plt.show()
+
 Y_k[1:] = 2*Y_k[1:] # need to take the single-sided spectrum only
+plt.plot(f,Y_k)
+plt.show()
+
 Pxx = np.abs(Y_k) # be sure to get rid of imaginary part
 
-f = Fs*np.arange((N/2))/N; # frequency vector
 
 # plotting
 fig,ax = plt.subplots()
-plt.plot(f,Pxx,linewidth=5)
+plt.plot(f,Pxx)
 ax.set_xscale('log')
 ax.set_yscale('log')
 plt.ylabel('Amplitude')
 plt.xlabel('Frequency [Hz]')
+
 plt.show()

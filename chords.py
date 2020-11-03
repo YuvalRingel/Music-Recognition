@@ -1,8 +1,8 @@
 from guitar import *
 
-class Chord(Guitar):
-    def __init__(self, strings):
-        Guitar.__init__(self, strings)
+class Chord():
+    def __init__(self, guitar):
+        self.guitar = guitar
         self.chord_frets = [-1, -1, -1, -1, -1, -1]
         self.chord_notes = [X, X, X, X, X, X]
         self.degrees = []
@@ -26,6 +26,10 @@ class Chord(Guitar):
         result += 'root fret: ' + str(self.root[0]) + ' ' + str(self.root[1])
         print(result)
 
+    def add_chord(self, notes):
+        for string, fret in notes:
+            Chord.add_note(self, string, fret)
+
     def add_note(self, string_num, fret):
         Chord.choose_note(self, string_num, fret)         #adding note and erasing slash chord
         Chord.decide_root(self)
@@ -33,9 +37,9 @@ class Chord(Guitar):
         Chord.decide_chord(self, self.notes_used)
 
     def choose_note(self, string_num, fret):
-        String.choose_fret(self.strings[string_num - 1], fret)
+        String.choose_fret(self.guitar.strings[string_num - 1], fret)      #Dafuq?
         self.chord_frets[string_num - 1] = fret
-        self.chord_notes[string_num - 1] = self.strings[string_num - 1].fret_note_chosen
+        self.chord_notes[string_num - 1] = self.guitar.strings[string_num - 1].fret_note_chosen
         self.slash_chord = ''
         self.slash = None
 
