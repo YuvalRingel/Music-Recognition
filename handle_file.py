@@ -4,11 +4,6 @@ import matplotlib.pyplot as plt
 import os
 import subprocess
 
-
-# tdl
-# Youtube
-
-# doesnt work...
 def download_sound(link):
     yt = YouTube(link)
     t = yt.streams.filter(only_audio=True).all()
@@ -18,7 +13,6 @@ def download_sound(link):
     old_file = path + name + '.mp4'
     new_file = path + name + '.wav'
 
-    # MAGIC
     command = "C:/ffmpeg/bin/ffmpeg -i "+ old_file+ " -ab 160k -ac 2 -ar 44100 -vn " + new_file
     subprocess.call(command, shell=True)
     data = load_sound(path=new_file)
@@ -29,10 +23,8 @@ def download_sound(link):
 
 def load_sound(path):
     samplerate, data = wavfile.read(path)
-    #data = data[(len(data) // 64) - 1000:(len(data) // 32)]
-    #data = data[700000:2500000]
-    # plt.plot(data)
-    # plt.show()
+    # data = data[(len(data) // 64) - 1000:(len(data) // 32)]
+    # data = data[500000:]
     return samplerate, data
 
 
@@ -41,5 +33,3 @@ def delete_file(file):
             os.remove(file)
     else:
         print("The file does not exist")
-
-

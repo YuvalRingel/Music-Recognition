@@ -1,11 +1,33 @@
-from chords import *
-from guitar import *
 from tabs_process import *
-from printer import *
+from e_printer import *
+###############################################
+# link='https://www.youtube.com/watch?v=qAlyjGrThGo',
+# A B C D E F G
+# major and than minor
+# strum, one note t a time, strum
+###############################################
 
-# new_tabs = file_to_tabs(path=''./sounds/'Bmaj7.wav', guitar = standard_guitar)
-new_tabs = file_to_tabs(link='https://www.youtube.com/watch?v=MRknyvTEI7Q', guitar = standard_guitar)
+new_tabs = file_to_tabs(link='https://www.youtube.com/watch?v=qAlyjGrThGo',
+                        guitar = standard_guitar,
+                        simplify = False)
 print_tabs(new_tabs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #
 # chord1 = Chord(standard_guitar)
